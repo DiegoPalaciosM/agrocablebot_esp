@@ -1,0 +1,108 @@
+:root{
+    --primaryColor: #00a65e;
+    --textColor: #000000;
+    --backgroudColor: #C1D1B1;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    text-align: center;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: var(--primaryColor);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.topnav a {
+    float: left;
+    color: var(--textColor);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: var(--backgroudColor);
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.card {
+    background-color: var(--primaryColor);
+    width: 50%;
+    margin: auto;
+    border-radius: 25px;
+    padding: 5%;
+    align-items: center;
+}
+
+#home{
+    text-decoration-color: var(--textColor);
+}
+
+#changeDevice{
+    text-decoration-color: var(--textColor);
+}
+
+#changeWiFi{
+    text-decoration-color: var(--textColor);
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--backgroudColor);
+}
+
+section {
+    width: 100%;
+}
+
+input[type=submit] {
+    border: none;
+    color: var(--textColor);
+    background-color: var(--backgroudColor);
+    padding: 1.5vh 1vh;
+    margin-top: 4vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 80%;
+    width: 25%;
+    border-radius: 10vh;
+}
+
+input[type=submit]:hover {
+    background-color: #00a65e;
+    cursor: pointer;
+}
+
+input[type=text],
+input[type=number],
+select {
+    width: 40vw;
+    padding: 2.5vh 4vw;
+    margin: 1.5vh;
+    display: inline-block;
+    border: 0.2vh solid var(--textColor);
+    border-radius: 1vh;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+table {
+    margin: 0 auto; /* or margin: 0 auto 0 auto */
+  }

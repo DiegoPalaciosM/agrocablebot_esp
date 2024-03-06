@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Agrocablebot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" href="icon.png">
+</head>
+
+<body>
+  <div class="topnav" id="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#changeDevice">Cambiar Dispositivo</a>
+    <a href="#changeWiFi">Cambiar WiFi</a>
+  </div>
+
+  <div>
+
+    <section id="home">
+      <div class="card">
+        <H1>Longitud actual de los cables</H1>
+        <table>
+          <tr>
+            <th>Cable</th>
+            <th>Longitud</th>
+          </tr>
+          <tr>
+            <td>A</td>
+            <td id="curCA">0</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td id="curCB">0</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td id="curCC">0</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td id="curCD">0</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="changeDevice">
+      <div class="card">
+        <h1>Cambiar servidor MQTT</h1>
+        <h4 id="host">
+          </h3>
+          <form action="/changeMQTT" method="POST">
+            <p>
+              <input type="text" id="mqttHost" name="mqttHost" placeholder="xxx.xxx.xxx.xxx" class="form-control">
+              <input type="submit" value="Cambiar">
+            </p>
+          </form>
+      </div>
+    </section>
+
+    <section id="changeWiFi">
+      <div class="card">
+        <h1>Cambiar Red WiFi</h1>
+        <form action="/changeWiFi" method="POST">
+          <p>
+            <input type="text" id="ssid" name='ssid' placeholder='SSID' class="form-control">
+            <input type="text" id="pass" name="pass" placeholder="Password" class="form-control"><br>
+            <input type="submit" value="Cambiar">
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </div>
+  <script src="static/jquery.js"></script>
+  <script src="static/main.js"></script>
+</body>
+
+</html>

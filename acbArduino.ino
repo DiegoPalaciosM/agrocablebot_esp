@@ -22,10 +22,10 @@ void setup() {
 }
 
 void loop() {
-  if (tEnd - tInit > 5000){
-    tInit = tEnd;
-    notifyClients();
-  }
+  // if (tEnd - tInit > 5000){
+  //   tInit = tEnd;
+  //   notifyClients();
+  // }
   if (enableOTA) {
     ArduinoOTA.handle();
   }
@@ -43,6 +43,6 @@ void loop() {
     Serial.printf("MQTT: %s\n", buf);
     parseCmd();
   }
-  ws.cleanupClients();
-  tEnd = millis();
+  //ws.cleanupClients();
+  //tEnd = millis();
 }

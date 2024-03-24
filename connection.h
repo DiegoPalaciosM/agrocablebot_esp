@@ -81,12 +81,12 @@ bool startWiFi() {
 }
 
 void connectToMqtt() {
-  Serial.printf("connectToMqtt: %s\n", mqttHost);
   clientMqtt.setCredentials("imacuna", "pi");
   if (mqttHost == "") {
     return;
   }
   clientMqtt.setServer(mqttHost.c_str(), 1883);
+  Serial.printf("connectToMqtt: %s\n", mqttHost);
   clientMqtt.connect();
 }
 
@@ -94,12 +94,14 @@ void connectToWifi() {
   if (startWiFi()) {
     Serial.printf("Conectado a: %s\n", ssid);
     Serial.printf("IP: %s\n", WiFi.localIP().toString());
+  connectToMqtt();
+
 
   } else {
     WiFi.mode(WIFI_AP);
     WiFi.softAP("Agrocablebot", "imacuna2023.");
     Serial.println("AP Creado");
-    Serial.printf("IP: %s\n",WiFi.softAPIP().toString());
+    Serial.printf("IP: %s\n", WiFi.softAPIP().toString());
   }
   if (!MDNS.begin("agrocablebot")) {
     Serial.println("Error configurando MDNS");
@@ -107,7 +109,6 @@ void connectToWifi() {
     Serial.println("MDNS Creado");
   }
 
-  connectToMqtt();
 }
 
 void onMqttConnect(bool sessionPresent) {
@@ -144,7 +145,11 @@ void onMqttMessage(char* topic, char* payload,
       for (int i = 0; i < auxLen; i++) {
         buf[i] = aux.charAt(i);
       }
-      mqttmessageAvailable = true;
+      if (buf[0] == 'M') {
+        parseCmd();
+      } else {
+        mqttmessageAvailable = true;
+      }
     } else if (cmdJson.containsKey("command")) {
       if (cmdJson["command"] == "enableOTA") {
         enableOTA = true;

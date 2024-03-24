@@ -573,14 +573,15 @@ void parseMcode(char *cmd) {
 void parseCmd() {
   char *cmd = buf;
   if (cmd[0] == 'G') {
+    clientMqtt.publish("status", 0, false, "{\"esp\":\"MOVING\"}");
     parseGcode(cmd + 1);
     Serial.println("OK");
     clientMqtt.publish("status", 0, false, "{\"esp\":\"OK\"}");
-  } else if (cmd[0] == 'M') {
-    parseMcode(cmd + 1);
-    Serial.println("OK");
-    clientMqtt.publish("status", 0, false, "{\"esp\":\"OK\"}");
-  }
+  }  else if (cmd[0] == 'M') {
+     parseMcode(cmd + 1);
+     Serial.println("OK");
+     clientMqtt.publish("status", 0, false, "{\"esp\":\"OK\"}");
+   }
   mqttmessageAvailable = false;
   resetBuff();
 }
